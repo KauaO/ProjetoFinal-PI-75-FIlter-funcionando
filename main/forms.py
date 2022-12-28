@@ -20,3 +20,8 @@ class ServicoForms(forms.ModelForm):
     class Meta:
         model = Servico
         fields = '__all__'
+
+class AtendimentoForms(forms.ModelForm):
+    class Meta:
+        model = Atendimento
+        fields = '__all__'

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+{% csrf_token %}
+
+<div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-md">
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Saldo</th>
+          <th class="col-md-2 center-block">Ações</th>
+        </tr>
+        {% for Cliente in lista_cli  %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ Cliente.nome }}</td>
+            <td>{{ Cliente.telefone }}</td>
+            <td> R$ {{ Cliente.saldo }},00 </td>
+                <td class="col-md-2 center-block text-center">
+                    <a href="{% url 'editCli'  Cliente.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'removCli'  Cliente.id %}" class="btn btn-danger">Remover</a>
+                </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% endblock %}

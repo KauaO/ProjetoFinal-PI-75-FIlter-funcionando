@@ -43,6 +43,9 @@ class Servico(models.Model):
     valor_servico = models.IntegerField()
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     
+    def __str__(self) -> str:
+         return self.descricao
+      
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     CPF = models.CharField(max_length=100)
