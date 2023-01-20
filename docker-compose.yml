@@ -1,0 +1,20 @@
+version: '3.9.8'
+
+Services:
+  django:
+    command: gunicorn projetofinal.wsgi application --bind 0.0.0.0:8000
+    build:
+    ports:
+      - "8000:8000"
+    volumes:
+      - db_volume:/home/app/banco
+      - static_volume:/home/app/main/static
+  nginx:
+    build: ./ginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/home/app/main/static
+volumes:
+  db_volume:
+  static_volume:
